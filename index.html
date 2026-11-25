@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123c2b">
+<title>Misi Kata Tanya Bersama Si Penjelajah</title>
+<style>
+:root{--forest:#123c2b;--deep:#0b281e;--leaf:#247448;--lime:#b8dc72;--gold:#ffd166;--cream:#fff8e8;--orange:#f28c45;--ink:#183629;--muted:#617568;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:linear-gradient(145deg,#e9f4d8,#fff8e8 55%,#e2f0d9);min-height:100vh}
+header{background:linear-gradient(120deg,var(--deep),var(--leaf));color:white;padding:22px 16px 28px;position:relative;overflow:hidden}
+header:after{content:"🌿　🍃　🌴　🍃　🌿";position:absolute;right:3%;bottom:5px;font-size:clamp(22px,4vw,42px);opacity:.25;white-space:nowrap}
+.wrap{width:min(100% - 28px,980px);margin:auto}.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.08em;font-size:.8rem;color:var(--lime)}.score{background:#ffffff20;border:1px solid #ffffff45;border-radius:999px;padding:8px 14px;font-weight:700}
+h1{font-size:clamp(1.8rem,5vw,3rem);line-height:1.08;margin:18px 0 8px;max-width:720px}header p{margin:0;max-width:650px;color:#e2f1e5}
+main{padding:24px 0 50px}.hero,.panel{background:var(--white);border:1px solid #dce8d8;border-radius:22px;padding:clamp(18px,4vw,30px);box-shadow:0 10px 28px #18362912}
+.hero{display:grid;grid-template-columns:1.5fr .7fr;gap:18px;align-items:center}.mascot{font-size:clamp(76px,12vw,125px);text-align:center;background:linear-gradient(145deg,#e5f5c9,#fff0c2);border-radius:20px;padding:12px}
+h2{margin:0 0 10px;color:var(--forest);font-size:1.55rem}.lead{color:var(--muted);line-height:1.65}.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+button{border:0;border-radius:13px;padding:12px 18px;font:inherit;font-weight:750;cursor:pointer;transition:.15s}button:hover{transform:translateY(-1px);filter:brightness(1.03)}button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.primary{background:var(--leaf);color:white}.secondary{background:#edf5e8;color:var(--forest);border:1px solid #cddfc9}.gold{background:var(--gold);color:#4b3510}.small{padding:9px 13px;font-size:.92rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:20px}.mission{border:1px solid #dbe8d5;border-radius:18px;padding:18px;background:#fbfff8;display:flex;flex-direction:column;gap:8px}.mission .emoji{font-size:2rem}.mission h3{margin:0;color:var(--forest)}.mission p{margin:0;color:var(--muted);font-size:.94rem;line-height:1.5}.mission button{margin-top:auto;align-self:flex-start}
+.hidden{display:none!important}.panel{margin-top:18px}.eyebrow{color:var(--leaf);font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}.question{font-size:1.18rem;font-weight:750;line-height:1.5;margin:18px 0}.options{display:grid;gap:10px}.option{background:#f5f9f1;border:2px solid #dce8d8;text-align:left;color:var(--ink)}.option.selected{border-color:var(--leaf);background:#eaf5e4}.option.correct{border-color:#2c995b;background:#e5f7e9}.option.wrong{border-color:#d66a52;background:#fff0eb}
+.feedback{margin-top:14px;padding:13px 15px;border-radius:13px;font-weight:650}.good{background:#e4f6e8;color:#176437}.bad{background:#fff0e9;color:#91442f}
+.progress{height:9px;background:#e8efe4;border-radius:99px;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;background:linear-gradient(90deg,#63a95e,#c4df72);width:0;transition:width .25s}
+.notegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.notecard{border-radius:15px;padding:14px;background:#f0f7e9}.notecard b{display:block;color:var(--leaf);font-size:1.1rem}.notecard span{font-size:.9rem;color:var(--muted)}
+label{font-weight:700;display:block;margin:14px 0 6px}input,textarea{width:100%;padding:13px;border:2px solid #dce8d8;border-radius:12px;font:inherit;background:#fcfff9}textarea{min-height:90px;resize:vertical}
+.result{font-size:1.1rem;font-weight:800;color:var(--forest);margin:10px 0}.footer{text-align:center;color:var(--muted);font-size:.85rem;margin:24px 0 0}
+@media(max-width:650px){.hero{grid-template-columns:1fr}.mascot{font-size:75px}.grid{grid-template-columns:1fr}.notegrid{grid-template-columns:repeat(2,1fr)}header{padding-top:18px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="topline"><div class="brand">🌿 JUNGLE LEARNING ADVENTURE</div><div class="score">⭐ Markah: <span id="totalScore">0</span></div></div>
+ <h1>Misi Kata Tanya<br><span style="color:#d5ed91">Bersama Si Penjelajah</span></h1>
+ <p>Teroka hutan ilmu, kenali enam kata tanya dan selesaikan cabaran bahasa!</p>
+</div></header>
+<main class="wrap">
+<section id="home" class="hero">
+ <div><div class="eyebrow">Selamat datang, penjelajah muda!</div><h2>Adakah kamu bersedia?</h2>
+ <p class="lead">Ikuti empat misi untuk menguasai kata tanya. Baca nota ringkas, jawab soalan dan bina ayat tanya sendiri. Kumpulkan bintang sepanjang pengembaraan!</p>
+ <div class="btnrow"><button class="primary" onclick="show('missions')">🚩 Mula pengembaraan</button><button class="secondary" onclick="show('notes')">📖 Lihat nota ringkas</button></div></div>
+ <div class="mascot" aria-label="Penjelajah dan harimau">🧭🐯</div>
+</section>
+<section id="missions" class="hidden">
+ <div class="panel"><div class="eyebrow">Peta pengembaraan</div><h2>Pilih misi kamu</h2><p class="lead">Selesaikan misi mengikut turutan atau pilih aktiviti yang ingin dicuba.</p>
+ <div class="grid">
+  <article class="mission"><div class="emoji">🔎</div><h3>Misi 1: Detektif Kata Tanya</h3><p>Kenal pasti kata tanya berdasarkan maksud dan petunjuk.</p><button class="primary small" onclick="startQuiz(0)">Mula misi</button></article>
+  <article class="mission"><div class="emoji">✏️</div><h3>Misi 2: Lengkapkan Ayat</h3><p>Pilih kata tanya yang sesuai untuk melengkapkan ayat.</p><button class="primary small" onclick="startQuiz(1)">Mula misi</button></article>
+  <article class="mission"><div class="emoji">🗺️</div><h3>Misi 3: Cabaran Situasi</h3><p>Fahami situasi dan pilih kata tanya yang paling sesuai.</p><button class="primary small" onclick="startQuiz(2)">Mula misi</button></article>
+  <article class="mission"><div class="emoji">📝</div><h3>Misi 4: Bina Ayat Tanya</h3><p>Bina ayat tanya berdasarkan situasi yang diberikan.</p><button class="primary small" onclick="startWriting()">Mula misi</button></article>
+ </div><div class="btnrow"><button class="secondary" onclick="show('home')">← Halaman utama</button><button class="secondary" onclick="show('notes')">Baca nota</button></div></div>
+</section>
+<section id="notes" class="panel hidden">
+ <div class="eyebrow">Bekalan ilmu</div><h2>Kenali enam kata tanya</h2><p class="lead">Kata tanya digunakan untuk mendapatkan maklumat.</p>
+ <div class="notegrid">
+  <div class="notecard"><b>APA</b><span>Bertanya tentang benda atau perkara.<br><i>Apakah warna beg itu?</i></span></div>
+  <div class="notecard"><b>SIAPA</b><span>Bertanya tentang orang.<br><i>Siapakah nama guru kamu?</i></span></div>
+  <div class="notecard"><b>BILA</b><span>Bertanya tentang masa.<br><i>Bilakah kamu tiba?</i></span></div>
+  <div class="notecard"><b>DI MANA</b><span>Bertanya tentang tempat.<br><i>Di manakah rumah kamu?</i></span></div>
+  <div class="notecard"><b>MENGAPA</b><span>Bertanya tentang sebab.<br><i>Mengapakah kamu menangis?</i></span></div>
+  <div class="notecard"><b>BAGAIMANA</b><span>Bertanya tentang cara atau keadaan.<br><i>Bagaimanakah cara membuat jus?</i></span></div>
+ </div><div class="btnrow"><button class="primary" onclick="show('missions')">Teruskan ke misi →</button><button class="secondary" onclick="show('home')">Halaman utama</button></div>
+</section>
+<section id="quiz" class="panel hidden">
+ <div class="eyebrow" id="quizLabel">Misi</div><h2 id="quizTitle"></h2><div class="progress"><span id="progressBar"></span></div>
+ <div id="quizCount" class="eyebrow"></div><div id="questionText" class="question"></div><div id="options" class="options"></div><div id="feedback" aria-live="polite"></div>
+ <div class="btnrow"><button id="nextBtn" class="gold hidden" onclick="nextQuestion()">Soalan seterusnya →</button><button class="secondary" onclick="show('missions')">Keluar ke peta misi</button></div>
+</section>
+<section id="writing" class="panel hidden">
+ <div class="eyebrow">Misi 4 · Cabaran penulisan</div><h2>Bina ayat tanya kamu!</h2><p class="lead">Baca situasi. Tulis satu ayat tanya yang sesuai. Ingat, jawapan kamu boleh berbeza asalkan sesuai dengan situasi.</p>
+ <div class="mission"><div class="emoji">👩‍🏫</div><h3>Situasi 1: Di dalam kelas</h3><p>Kamu melihat seorang guru sedang mengajar murid-murid.</p><label for="w1">Ayat tanya kamu:</label><textarea id="w1" placeholder="Contoh: Siapakah yang sedang mengajar?"></textarea></div>
+ <div class="mission" style="margin-top:12px"><div class="emoji">⚽</div><h3>Situasi 2: Di padang</h3><p>Kamu melihat sekumpulan murid bermain bola sepak.</p><label for="w2">Ayat tanya kamu:</label><textarea id="w2" placeholder="Tulis ayat tanya kamu di sini..."></textarea></div>
+ <div class="mission" style="margin-top:12px"><div class="emoji">🧺</div><h3>Situasi 3: Berkelah</h3><p>Sebuah keluarga sedang berkelah di tepi sungai.</p><label for="w3">Ayat tanya kamu:</label><textarea id="w3" placeholder="Tulis ayat tanya kamu di sini..."></textarea></div>
+ <div class="btnrow"><button class="primary" onclick="submitWriting()">Hantar jawapan</button><button class="secondary" onclick="show('missions')">Kembali ke peta misi</button></div><div id="writingFeedback" aria-live="polite"></div>
+</section>
+<section id="complete" class="panel hidden" style="text-align:center"><div style="font-size:4rem">🏆🌟🐯</div><div class="eyebrow">Misi selesai</div><h2>Syabas, Penjelajah Muda!</h2><p class="lead">Kamu telah menyelesaikan cabaran ini. Teruskan berlatih untuk menjadi lebih mahir menggunakan kata tanya.</p><div class="result">Jumlah markah: <span id="finalScore">0</span> bintang</div><div class="btnrow" style="justify-content:center"><button class="primary" onclick="show('missions')">Pilih misi lain</button><button class="secondary" onclick="show('home')">Halaman utama</button></div></section>
+<p class="footer">🌿 Misi Kata Tanya Bersama Si Penjelajah · Belajar sambil meneroka!</p>
+</main>
+<script>
+const sets=[
+ {title:"Detektif Kata Tanya",items:[
+  ["Kata tanya manakah digunakan untuk bertanya tentang orang?",["APA","SIAPA","BILA","DI MANA"],1,"SIAPA digunakan untuk bertanya tentang orang."],
+  ["Kata tanya manakah digunakan untuk bertanya tentang masa?",["MENGAPA","BAGAIMANA","BILA","APA"],2,"BILA digunakan untuk bertanya tentang masa."],
+  ["Kata tanya manakah digunakan untuk bertanya tentang tempat?",["SIAPA","DI MANA","APA","BILA"],1,"DI MANA digunakan untuk bertanya tentang tempat."],
+  ["Kata tanya manakah digunakan untuk bertanya tentang sebab?",["APA","BILA","MENGAPA","SIAPA"],2,"MENGAPA digunakan untuk bertanya tentang sebab."],
+  ["Kata tanya manakah digunakan untuk bertanya tentang cara?",["BAGAIMANA","SIAPA","DI MANA","APA"],0,"BAGAIMANA digunakan untuk bertanya tentang cara atau keadaan."]
+ ]},
+ {title:"Lengkapkan Ayat",items:[
+  ["_____ nama kawan baharu kamu?",["Bila","Siapa","Mengapa","Di mana"],1,"SIAPA bertanya tentang orang."],
+  ["_____ kamu pergi ke sekolah?",["Bila","Apa","Siapa","Bagaimana"],0,"BILA bertanya tentang masa."],
+  ["_____ warna beg sekolah kamu?",["Mengapa","Di mana","Apa","Siapa"],2,"APA bertanya tentang benda atau perkara."],
+  ["_____ kamu tinggal?",["Siapa","Di mana","Bila","Apa"],1,"DI MANA bertanya tentang tempat."],
+  ["_____ kamu tidak hadir ke sekolah semalam?",["Apa","Siapa","Mengapa","Bila"],2,"MENGAPA bertanya tentang sebab."]
+ ]},
+ {title:"Cabaran Situasi",items:[
+  ["Rakan kamu menangis. Kamu ingin mengetahui sebabnya. Apakah soalan yang sesuai?",["Siapakah nama kamu?","Mengapakah kamu menangis?","Bilakah kamu datang?","Di manakah beg kamu?"],1,"MENGAPA digunakan untuk bertanya tentang sebab."],
+  ["Kamu ingin mengetahui tempat buku itu dibeli.",["Apakah buku itu?","Bilakah buku itu dibeli?","Di manakah buku itu dibeli?","Siapakah membeli buku itu?"],2,"DI MANA digunakan untuk bertanya tentang tempat."],
+  ["Kamu ingin mengetahui cara membuat sandwic.",["Bagaimanakah cara membuat sandwic?","Siapakah membuat sandwic?","Bilakah makan sandwic?","Apakah warna sandwic?"],0,"BAGAIMANA digunakan untuk bertanya tentang cara."],
+  ["Kamu ingin mengetahui waktu perlawanan bola sepak bermula.",["Mengapakah perlawanan bermula?","Bilakah perlawanan bermula?","Siapakah bermain?","Di manakah bola?"],1,"BILA digunakan untuk bertanya tentang masa."],
+  ["Kamu ingin mengetahui benda yang dibawa oleh rakan.",["Apakah yang dibawa oleh rakan kamu?","Bilakah rakan kamu datang?","Mengapakah rakan kamu datang?","Di manakah rakan kamu?"],0,"APA digunakan untuk bertanya tentang benda atau perkara."]
+ ]}
+];
+let currentSet=0,index=0,earned=0,answered=false;
+function show(id){document.querySelectorAll('main>section').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+function updateScore(){document.getElementById('totalScore').textContent=earned;}
+function startQuiz(n){currentSet=n;index=0;show('quiz');document.getElementById('quizTitle').textContent=sets[n].title;document.getElementById('quizLabel').textContent='Misi '+(n+1);renderQuestion();}
+function renderQuestion(){answered=false;let q=sets[currentSet].items[index];document.getElementById('quizCount').textContent=`SOALAN ${index+1} DARIPADA ${sets[currentSet].items.length}`;document.getElementById('progressBar').style.width=(index/sets[currentSet].items.length*100)+'%';document.getElementById('questionText').textContent=q[0];document.getElementById('feedback').innerHTML='';document.getElementById('nextBtn').classList.add('hidden');let box=document.getElementById('options');box.innerHTML='';q[1].forEach((v,i)=>{let b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+i)+'. '+v;b.onclick=()=>choose(i,b);box.appendChild(b);});}
+function choose(i,btn){if(answered)return;answered=true;let q=sets[currentSet].items[index],correct=i===q[2];document.querySelectorAll('.option').forEach((b,j)=>{b.disabled=true;if(j===q[2])b.classList.add('correct');if(j===i&&!correct)b.classList.add('wrong');});let f=document.getElementById('feedback');f.className='feedback '+(correct?'good':'bad');f.textContent=(correct?'Betul! ⭐ ':'Belum tepat. ') + q[3];if(correct){earned++;updateScore();}document.getElementById('nextBtn').textContent=index===sets[currentSet].items.length-1?'Lihat keputusan →':'Soalan seterusnya →';document.getElementById('nextBtn').classList.remove('hidden');}
+function nextQuestion(){if(index<sets[currentSet].items.length-1){index++;renderQuestion();}else{document.getElementById('progressBar').style.width='100%';document.getElementById('finalScore').textContent=earned;show('complete');}}
+function startWriting(){show('writing');document.getElementById('writingFeedback').innerHTML='';}
+function submitWriting(){let vals=['w1','w2','w3'].map(id=>document.getElementById(id).value.trim());let count=vals.filter(Boolean).length;let f=document.getElementById('writingFeedback');f.className='feedback '+(count===3?'good':'bad');f.textContent=count===3?'Syabas! Ketiga-tiga jawapan telah dihantar untuk semakan guru. Contoh jawapan: “Siapakah yang sedang mengajar?”, “Apakah permainan yang dimainkan?” dan “Di manakah keluarga itu berkelah?”':'Kamu telah mengisi '+count+' daripada 3 jawapan. Lengkapkan semua ruang sebelum menghantar.';if(count===3){earned+=3;updateScore();}}
+</script>
+</body>
+</html>
